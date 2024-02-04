@@ -33,8 +33,8 @@ const apiroutes = require("./routes/api.routes")
 const usersRoutes = require("./routes/users.routes")
 
 // //Rutas Template
-app.use('/api', apiroutes);
-app.use('/',usersRoutes);
+//app.use('/api', apiroutes);
+//app.use('/',usersRoutes);
 
 
 //* Serve static assets in production, must be at this location of this file
