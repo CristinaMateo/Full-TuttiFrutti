@@ -1,9 +1,6 @@
-# React + Vite
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
-
-Currently, two official plugins are available:
-
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
 # Full-TuttiFrutti
+
+This project is a remake of the original idea "MyTuttiFruttiApp" available here: https://github.com/CristinaMateo/mytuttifruttiApp . 
+
+This new recreation of the project has its own API , that has been created using the old version as a guide, but with its own Database on MongoDBAtlas. The server was established using Node.js and Express. It is accessed internally from the Frontend of the project, for which React.js has been used, in addition to Sass for the stylistic layout of it.
