@@ -33,7 +33,7 @@ const apiroutes = require("./routes/api.routes")
 const usersRoutes = require("./routes/users.routes")
 
 // //Rutas Template
-//app.use('/api', apiroutes);
+app.use('/api', apiroutes);
 //app.use('/',usersRoutes);
 
 
