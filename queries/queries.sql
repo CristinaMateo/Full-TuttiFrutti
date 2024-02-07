@@ -13,10 +13,12 @@ password text NOT NULL
 CREATE TABLE frutas (
 id_fruta serial NOT NULL PRIMARY KEY,
 nombre varchar (20) NOT NULL,
-calorias int NOT NULL,
-azúcar int NOT NULL,
-proteína int NOT NULL,
-carbs int NOT NULL
+calorias float NOT NULL,
+azucar float NOT NULL,
+proteina float NOT NULL,
+carbs float NOT NULL,
+fibra float NOT NULL,
+imagen text NOT NULL
 );
 
 
@@ -28,3 +30,7 @@ CREATE TABLE favoritos (
     FOREIGN KEY (id_usuario) REFERENCES usuarios(id_usuario),
     FOREIGN KEY (id_fruta) REFERENCES frutas(id_fruta)
 );
+
+--todas las frutas
+SELECT nombre, imagen
+FROM frutas;

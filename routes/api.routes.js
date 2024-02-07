@@ -4,5 +4,4 @@ const apiRouter = express.Router();
 
 
 apiRouter.get("/fruits", apiController.getAllFruits) //todas las frutas
-apiRouter.get("/fruits/:name", apiController.fruitName) //frutas por nombres
-apiRouter.get("/fruits/:order", apiController.fruitOrder) //por orden familiar para filtros
+apiRouter.get("/fruits/:name", apiController.getfruitbyName) //frutas por nombres
