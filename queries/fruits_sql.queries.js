@@ -8,9 +8,9 @@ createFruit:`INSERT INTO frutas (nombre, imagen, calorias, proteina, azucar, car
 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
 updateFruit:`UPDATE frutas
 SET image =$1
-WHERE nombre =$2;`,
+WHERE id =$2;`,
 deleteFruit:`DELETE FROM frutas
-WHERE nombre = $1;`
+WHERE id = $1;`
 }
 
 module.exports = queries
