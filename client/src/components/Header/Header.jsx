@@ -6,13 +6,18 @@ import { whoIsLogged } from "../Main/Authentication/utils";
 const Header = () => {
   const loggedUser = whoIsLogged()
 
+  
+
   return (
     <>
-      <nav>
-        {loggedUser && <Logged/>}
-        <button id="signup-login">Sign up / Log in</button>
-      </nav>
-      <header>My Tutti Frutti App</header>
+      <section>
+        {loggedUser && <Logged />}
+        {!loggedUser && <button id="signup-login">Sign up / Log in</button>}
+      </section>
+      <header>
+        <h1>My Tutti Frutti App</h1>
+        
+      </header>
     </>
   );
 };
