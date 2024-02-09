@@ -1,4 +1,4 @@
-const queries = require('../queries/events_sql.queries');
+const queries = require('../queries/fruits_sql.queries');
 const pool = require('../config/db_pgsql');
 
 
@@ -39,7 +39,7 @@ const getFruitByName =async (name) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
-        const data = await client.query(queries.getOneFruit, [name])
+        const data = await client.query(queries.getFruitByName, [name])
         result = data.rows[0]
     } catch (err) {
         console.log(err);

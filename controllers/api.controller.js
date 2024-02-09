@@ -4,10 +4,10 @@ const getAllFruits = async (req, res) => {
     let fruits;
     try {
         fruits = await api.getAllFruits();//esto accede a models y llama a esa funcion allí
-        res.status(200).json(events); // [] con las entries encontradas
+        res.status(200).json(fruits); // [] con las entries encontradas
     } catch (error) {
         res.status(400).json({
-            msg: "Error getting events"
+            msg: "Error getting fruits"
         })
     }
 }
@@ -15,24 +15,26 @@ const getAllFruits = async (req, res) => {
 
 const getOneFruit = async (req, res) => {
     let fruit;
+    console.log("HELOOOO");
     try {
+        console.log(req.params);
         fruit = await api.getOneFruit(req.params.id);//esto accede a models y llama a esa funcion allí
-        res.status(200).json(events); // [] con las entries encontradas
+        res.status(200).json(fruit); // [] con las entries encontradas
     } catch (error) {
         res.status(400).json({
-            msg: "Error getting events"
+            msg: "Error getting fruits"
         })
     }
 }
 
 const getFruitByName = async (req, res) => {
-    let events;
+    let fruits;
     try {
-        events = await api.getFruitByName(req.params.id);//esto accede a models y llama a esa funcion allí
-        res.status(200).json(events); // [] con las entries encontradas
+        fruits = await api.getFruitByName(req.params.name);//esto accede a models y llama a esa funcion allí
+        res.status(200).json(fruits); // [] con las entries encontradas
     } catch (error) {
         res.status(400).json({
-            msg: "Error getting events"
+            msg: "Error getting fruits"
         })
     }
 }
@@ -47,7 +49,7 @@ const createFruit = async (req, res) => {
         });
     } catch (error) {
         res.status(400).json({
-            msg: "Error creating event"
+            msg: "Error creating fruit"
         })
     }
 }
@@ -62,7 +64,7 @@ const updateFruit = async (req, res) => {
         });
     } catch (error) {
         res.status(400).json({
-            msg: "Error updating event"
+            msg: "Error updating fruit"
         })
     }
 }
@@ -78,7 +80,7 @@ const deleteFruit = async (req, res) => {
         });
     } catch (error) {
         res.status(400).json({
-            msg: "Error deleting event"
+            msg: "Error deleting fruit"
         })
     }
 }
