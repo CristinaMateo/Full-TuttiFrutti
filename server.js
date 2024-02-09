@@ -30,10 +30,10 @@ app.use(morgan(':method :host :status :param[id] - :response-time ms'));
 
 //rutas
 const apiroutes = require("./routes/api.routes")
-const usersRoutes = require("./routes/users.routes")
+//const usersRoutes = require("./routes/users.routes")
 
 // //Rutas Template
-//app.use('/api', apiroutes);
+app.use('/api', apiroutes);
 //app.use('/',usersRoutes);
 
 
