@@ -11,6 +11,7 @@ const Header = () => {
 
  const toAuth =()=>{
   navigate('/auth')
+  //en sass hacer que el botón sea hidden al hacer click en él 
  }
 
   return (
