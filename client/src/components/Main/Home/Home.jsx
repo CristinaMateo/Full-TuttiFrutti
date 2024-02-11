@@ -11,6 +11,7 @@ const Home = () => {
     try{
     const response = await axios.get('http://localhost:3000/api/fruits');
     const data = response.data;
+    console.log(data)
     setAllFruits(data)
     }catch(error){
       console.error("Error fetching fruits")
