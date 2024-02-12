@@ -6,6 +6,7 @@ import FruitList from '../FruitList'
 const Home = () => {
 
   const [allFruits, setAllFruits] = useState([]);
+  const [frutaTempo, setFrutaTempo] = useState([]);
 
   const getAllFruits = async () =>{
     try{
@@ -18,8 +19,18 @@ const Home = () => {
     }
   }
 
+  const comprobarMes = ()=>{
+  let fecha = new Date (Date.now())
+  let mes = fecha.getMonth()
+  console.log('este mes es',mes)
+  //crear ruta,controlador, modelo, query de llamada a bbdd para meses de temporada
+  //llamar meses segun resultado de getMonth 
+  //devolver fruta correspondiente al mes en lista aside con map()
+  }
+
   useEffect(()=>{
     getAllFruits();
+    comprobarMes();
   }, []);
 
 
