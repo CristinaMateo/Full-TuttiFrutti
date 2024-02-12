@@ -13,7 +13,6 @@ const Home = () => {
     try{
     const response = await axios.get('http://localhost:3000/api/fruits');
     const data = response.data;
-    console.log(data)
     setAllFruits(data)
     }catch(error){
       console.error("Error fetching fruits")
@@ -55,7 +54,7 @@ const Home = () => {
 
       <aside className="temporada">
 
-        <h3>Frutas de temporada en {frutaTempo[0].nombre_mes}</h3>
+        <h3>Frutas de temporada en {frutaTempo.length > 0 ? frutaTempo[0].nombre_mes : "el mes actual"}</h3>
       <ul>
         {frutaTempo.map((fruta, index) => (
           <li key={index}>{fruta.nombre}</li>

@@ -15,9 +15,7 @@ const getAllFruits = async (req, res) => {
 
 const getOneFruit = async (req, res) => {
     let fruit;
-    console.log("HELOOOO");
     try {
-        console.log(req.params);
         fruit = await api.getOneFruit(req.params.id);//esto accede a models y llama a esa funcion allí
         res.status(200).json(fruit); // [] con las entries encontradas
     } catch (error) {

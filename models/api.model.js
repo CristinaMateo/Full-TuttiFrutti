@@ -20,7 +20,7 @@ const getAllFruits = async () => {
 }
 
 
-const getOneFruit= async (id) => {
+const getOneFruit = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion

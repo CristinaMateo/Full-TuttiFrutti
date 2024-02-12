@@ -1,9 +1,9 @@
 const queries ={
-getFruits: `SELECT nombre, imagen
+getFruits: `SELECT nombre, imagen, id_fruta
 FROM frutas;`,
-getOneFruit: `SELECT nombre, imagen, calorias, azucar, proteina, carbs, fibra
+getOneFruit: `SELECT id_fruta, nombre, imagen, calorias, azucar, proteina, carbs, fibra
 FROM frutas
-WHERE id_fruta=$1;`,
+WHERE id_fruta = $1;`,
 getFruitByName:`SELECT nombre, imagen
 FROM frutas
 WHERE nombre =$1;`,

@@ -2,14 +2,14 @@ import React from "react";
 import { useNavigate } from "react-router-dom";
 
 
-const FruitCard = ({fruits}) => {
+const FruitCard = ({ fruits }) => {
   if (!fruits) {
     return null;
   }
 
   const navigate = useNavigate()
 
-  const renderDetail=()=>{
+  const renderDetail = () => {
     navigate(`/fruit/${fruits.id_fruta}`)
   }
 
