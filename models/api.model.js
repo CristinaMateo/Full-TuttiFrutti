@@ -20,7 +20,7 @@ const getAllFruits = async () => {
 }
 
 
-const getOneFruit= async (id) => {
+const getOneFruit = async (id) => {
     let client, result;
     try {
         client = await pool.connect(); // Espera a abrir conexion
@@ -41,6 +41,21 @@ const getFruitByName =async (name) => {
         client = await pool.connect(); // Espera a abrir conexion
         const data = await client.query(queries.getFruitByName, [name])
         result = data.rows[0]
+    } catch (err) {
+        console.log(err);
+        throw err;
+    } finally {
+        client.release();
+    }
+    return result
+}
+
+const getTemporada = async (num) =>{
+    let client, result;
+    try {
+        client = await pool.connect(); // Espera a abrir conexion
+        const data = await client.query(queries.getMonth, [num])
+        result = data.rows
     } catch (err) {
         console.log(err);
         throw err;
@@ -107,6 +122,7 @@ const fruits ={
     getAllFruits,
     getOneFruit,
     getFruitByName,
+    getTemporada,
     createFruit,
     updateFruit,
     deleteFruit

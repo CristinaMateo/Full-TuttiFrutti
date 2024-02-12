@@ -15,9 +15,7 @@ const getAllFruits = async (req, res) => {
 
 const getOneFruit = async (req, res) => {
     let fruit;
-    console.log("HELOOOO");
     try {
-        console.log(req.params);
         fruit = await api.getOneFruit(req.params.id);//esto accede a models y llama a esa funcion allí
         res.status(200).json(fruit); // [] con las entries encontradas
     } catch (error) {
@@ -35,6 +33,18 @@ const getFruitByName = async (req, res) => {
     } catch (error) {
         res.status(400).json({
             msg: "Error getting fruits"
+        })
+    }
+}
+
+const getTempo = async (req,res) => {
+    let temporada;
+    try{
+        temporada = await api.getTemporada(req.params.num)
+        res.status(200).json(temporada);
+    } catch (error) {
+        res.status(400).json({
+            msg: "Error getting temporada"
         })
     }
 }
@@ -85,10 +95,13 @@ const deleteFruit = async (req, res) => {
     }
 }
 
+
+
 module.exports ={
     getAllFruits,
     getOneFruit,
     getFruitByName,
+    getTempo,
     createFruit,
     updateFruit,
     deleteFruit
