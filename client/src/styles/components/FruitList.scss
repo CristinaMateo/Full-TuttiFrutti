@@ -1,0 +1,6 @@
+@import '../utils/variables.scss';
+
+.frutiLista{
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr ;
+}

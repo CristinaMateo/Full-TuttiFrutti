@@ -1,0 +1,20 @@
+@import '../utils/variables.scss';
+
+#root {
+    text-align: center;
+    margin: 10px auto;
+    min-height: 100vh;
+    font-size: 25px;
+    max-width: 87vw;
+    padding: 2rem;
+    font-family: Yomogi;
+}
+
+body {
+    background-color: $background;
+}
+
+@font-face {
+    font-family: "Yomogi";
+    src: url("/src/assets/font.ttf");
+}

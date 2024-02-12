@@ -1,0 +1,25 @@
+@import '../utils/variables.scss';
+
+
+.smallImg{
+    width: 70%;
+    margin: 0.5em auto;
+}
+
+.card {
+    background-color: $card;
+    width: 90%;
+    margin: 0.5em auto;
+    display: grid;
+    justify-content: center;
+    box-shadow: $shadow 5px 6px 20px 0px;
+    border-radius: 0.5em;
+    cursor: pointer;
+}
+
+.card > h3, .indvcard > h3 {
+    text-align: center;
+    background-color: $lightgr;
+    height: fit-content;
+    border-radius: 2.5em;
+}

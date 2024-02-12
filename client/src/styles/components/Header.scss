@@ -1,0 +1,12 @@
+@import '../utils/variables.scss';
+
+header{
+    background-color: $orange;
+    color: $card;
+
+    width: 70%;
+    margin: auto;
+    justify-content: center;
+    border-radius: 1em;
+    padding: 0.25em 0.5em;
+}

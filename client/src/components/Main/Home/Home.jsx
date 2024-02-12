@@ -48,6 +48,9 @@ const Home = () => {
         - algún filtro, por ejemplo menos de x gramos de azucar
       </form>
 
+
+      <section className="bigGrid">
+
       <article className="fruit-list">
         <FruitList fruitList ={allFruits}/>
       </article>
@@ -61,6 +64,8 @@ const Home = () => {
         ))}
       </ul>
       </aside>
+
+      </section>
 
     </section>
   );
