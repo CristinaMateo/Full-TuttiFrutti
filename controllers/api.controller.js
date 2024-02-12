@@ -39,6 +39,18 @@ const getFruitByName = async (req, res) => {
     }
 }
 
+const getTempo = async (req,res) => {
+    let temporada;
+    try{
+        temporada = await api.getTemporada(req.params.num)
+        res.status(200).json(temporada);
+    } catch (error) {
+        res.status(400).json({
+            msg: "Error getting temporada"
+        })
+    }
+}
+
 const createFruit = async (req, res) => {
     try {
         const newFruit = req.body; 
@@ -85,10 +97,13 @@ const deleteFruit = async (req, res) => {
     }
 }
 
+
+
 module.exports ={
     getAllFruits,
     getOneFruit,
     getFruitByName,
+    getTempo,
     createFruit,
     updateFruit,
     deleteFruit

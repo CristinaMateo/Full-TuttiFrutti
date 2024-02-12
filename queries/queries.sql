@@ -71,6 +71,7 @@ DELETE FROM frutas
 WHERE id_fruta = $1;
 
 --sacar mes de temporada
-SELECT id_fruta, nombre_mes 
-FROM temporada 
+SELECT f.nombre , nombre_mes
+FROM frutas AS f
+INNER JOIN temporada AS tem ON f.id_fruta = tem.id_fruta
 WHERE numero_mes= $1 +1;

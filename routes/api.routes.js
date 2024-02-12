@@ -4,8 +4,9 @@ const apiRouter = express.Router();
 
 
 apiRouter.get("/fruits", apiController.getAllFruits) //todas las frutas
-apiRouter.get("/fruit/:id", apiController.getOneFruit) //fruta detalle 
+apiRouter.get("/fruits/:id", apiController.getOneFruit) //fruta detalle 
 apiRouter.get("/fruits/:name", apiController.getFruitByName) //frutas por nombres para buscador
+apiRouter.get("/fruits/tempo/:num", apiController.getTempo) //sacar frutas temporada
 /* apiRouter.post("/fruits", apiController.createFruit) //admin crear frutas
 apiRouter.put("/fruits", apiController.updateFruit) //admin update imagen fruta
 apiRouter.delete("/fruits", apiController.deleteFruit) // admin eliminar fruta */

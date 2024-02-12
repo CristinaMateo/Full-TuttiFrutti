@@ -7,6 +7,7 @@ const Home = () => {
 
   const [allFruits, setAllFruits] = useState([]);
   const [frutaTempo, setFrutaTempo] = useState([]);
+  const [mesTempo, setMesTempo] =useState("");
 
   const getAllFruits = async () =>{
     try{
@@ -19,13 +20,16 @@ const Home = () => {
     }
   }
 
-  const comprobarMes = ()=>{
+  const comprobarMes = async()=>{
+    try{
   let fecha = new Date (Date.now())
   let mes = fecha.getMonth()
-  console.log('este mes es',mes)
-  //crear ruta,controlador, modelo de llamada a bbdd para meses de temporada
-  //llamar meses segun resultado de getMonth 
-  //devolver fruta correspondiente al mes en lista aside con map()
+  const response = await axios.get(`http://localhost:3000/api/fruits/tempo/${mes}`);
+  const data = response.data;
+  setFrutaTempo(data)
+} catch (error) {
+  console.error('Error al obtener los datos', error);
+}
   }
 
   useEffect(()=>{
@@ -51,6 +55,12 @@ const Home = () => {
 
       <aside className="temporada">
 
+        <h3>Frutas de temporada en {frutaTempo[0].nombre_mes}</h3>
+      <ul>
+        {frutaTempo.map((fruta, index) => (
+          <li key={index}>{fruta.nombre}</li>
+        ))}
+      </ul>
       </aside>
 
     </section>

@@ -14,8 +14,9 @@ SET imagen =$1
 WHERE id_fruta =$2;`,
 deleteFruit:`DELETE FROM frutas
 WHERE id_fruta = $1;`,
-getMonth:`SELECT id_fruta, nombre_mes 
-FROM temporada 
+getMonth:`SELECT f.nombre , nombre_mes
+FROM frutas AS f
+INNER JOIN temporada AS tem ON f.id_fruta = tem.id_fruta
 WHERE numero_mes= $1 +1;`
 }
 
