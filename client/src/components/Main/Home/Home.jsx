@@ -23,7 +23,7 @@ const Home = () => {
   let fecha = new Date (Date.now())
   let mes = fecha.getMonth()
   console.log('este mes es',mes)
-  //crear ruta,controlador, modelo, query de llamada a bbdd para meses de temporada
+  //crear ruta,controlador, modelo de llamada a bbdd para meses de temporada
   //llamar meses segun resultado de getMonth 
   //devolver fruta correspondiente al mes en lista aside con map()
   }
