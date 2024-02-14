@@ -19,6 +19,11 @@ app.use(session({ secret: 'SECRET' }));
 app.use(passport.initialize());
 app.use(passport.session()); 
 
+/* //Inicializamos passport y la session de passport
+app.use(session({ secret: 'SECRET' }));
+app.use(passport.initialize());
+app.use(passport.session());  */
+
 //middelwares
 const error404 = require('./middlewares/error404')
 const morgan = require('./middlewares/morgan')
