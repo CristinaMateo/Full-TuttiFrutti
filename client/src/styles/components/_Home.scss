@@ -1,0 +1,26 @@
+@import '../utils/variables.scss';
+
+
+
+.bigGrid {
+    display: grid;
+    grid-template-columns: 1fr 3fr;
+    margin-top: 20px;
+    padding-top: 30px;
+    grid-column-gap: 40px;
+}
+
+li {
+    list-style: none;
+}
+
+a {
+    text-decoration: none;
+}
+
+
+@media screen and (max-width: 900px) {
+    .bigGrid {
+        grid-template-columns: repeat(1, 1fr);
+    }
+}

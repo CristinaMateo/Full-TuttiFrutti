@@ -1,0 +1,27 @@
+@import '../utils/variables.scss';
+
+.indvcard{
+    background-color: $card;
+    width: 50%;
+    margin: 0.5em auto;
+    display: grid;
+    justify-content: center;
+    box-shadow: $shadow 5px 6px 20px 0px;
+    border-radius: 0.1em;
+}
+.bigImg{
+    width: 80%;
+    margin: 1em auto;
+}
+
+@media screen and (max-width: 800px) {
+    .indvcard{
+        width: 70%;
+    }
+}
+
+@media screen and (max-width: 550px) {
+    .indvcard{
+        width: 90%;
+    }
+}

@@ -40,7 +40,7 @@ const Details = () => {
   }, []);
 
   return (
-    <article className="detallesFruta">
+    <article className="indvcard">
 
       {fruitDet && (
         <>
