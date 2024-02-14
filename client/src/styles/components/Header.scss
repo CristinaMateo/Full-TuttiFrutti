@@ -10,6 +10,8 @@ header {
     padding: 0.25em 0.5em;
 }
 
+
+
 nav {
     display: flex;
     justify-content: center;
@@ -52,6 +54,7 @@ nav>a {
     header{
         width: 90%;
     }
+    
 }
 
 
@@ -62,8 +65,3 @@ nav>a {
     }
 }
 
-@media screen and (max-width: 600px) {
-    header{
-        width: 100%;
-    }
-}
