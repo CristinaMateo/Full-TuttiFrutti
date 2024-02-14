@@ -12,7 +12,7 @@ const session = require("express-session");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({origin:'*'}))
+app.use(cors({origin:'http://localhost:5173'}))
 
 //Inicializamos passport y la session de passport
 app.use(session({ secret: 'SECRET' }));

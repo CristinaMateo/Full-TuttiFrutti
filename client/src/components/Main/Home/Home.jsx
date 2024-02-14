@@ -11,7 +11,7 @@ const Home = () => {
 
   const getAllFruits = async () => {
     try {
-      const response = await axios.get('http://localhost:3000/api/fruits');
+      const response = await axios.get('/api/fruits');
       const data = response.data;
       setAllFruits(data)
     } catch (error) {
@@ -23,7 +23,7 @@ const Home = () => {
     try {
       let fecha = new Date(Date.now())
       let mes = fecha.getMonth()
-      const response = await axios.get(`http://localhost:3000/api/fruits/tempo/${mes}`);
+      const response = await axios.get(`/api/fruits/tempo/${mes}`);
       const data = response.data;
       setFrutaTempo(data)
     } catch (error) {

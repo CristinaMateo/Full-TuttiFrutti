@@ -13,7 +13,7 @@ const Details = () => {
 
     const fetchFruitDet = async () => {
       try {
-        const response = await axios.get(`http://localhost:3000/api/fruit/${id}`);
+        const response = await axios.get(`/api/fruit/${id}`);
         const data = await response.data
         
 
