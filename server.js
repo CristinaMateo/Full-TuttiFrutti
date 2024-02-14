@@ -12,12 +12,17 @@ const session = require("express-session");
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors({origin:'http://localhost:5173'}))
+app.use(cors({origin:'*'}))
 
 //Inicializamos passport y la session de passport
 app.use(session({ secret: 'SECRET' }));
 app.use(passport.initialize());
 app.use(passport.session()); 
+
+/* //Inicializamos passport y la session de passport
+app.use(session({ secret: 'SECRET' }));
+app.use(passport.initialize());
+app.use(passport.session());  */
 
 //middelwares
 const error404 = require('./middlewares/error404')
@@ -30,10 +35,10 @@ app.use(morgan(':method :host :status :param[id] - :response-time ms'));
 
 //rutas
 const apiroutes = require("./routes/api.routes")
-const usersRoutes = require("./routes/users.routes")
+//const usersRoutes = require("./routes/users.routes")
 
 // //Rutas Template
-//app.use('/api', apiroutes);
+app.use('/api', apiroutes);
 //app.use('/',usersRoutes);
 
 
