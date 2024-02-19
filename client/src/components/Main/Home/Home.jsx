@@ -80,15 +80,14 @@ const Home = () => {
         const response = await axios.get(`http://localhost:3000/api/fruits/${formattedSearchText}`);
         const data = response.data;
   
-        // Verifica si es un array o un objeto y tiene al menos una fruta
         if ((Array.isArray(data) && data.length > 0) || (typeof data === 'object' && Object.keys(data).length > 0)) {
-          setTidyFruits([data]); // Puedes convertir el objeto a un array si es necesario
+          setTidyFruits([data]); 
         } else {
-          setTidyFruits([]); // No se encontraron frutas
+          setTidyFruits(allFruits); 
           alert("Fruta no encontrada");
         }
       } catch (error) {
-        setTidyFruits([]); // Error al realizar la solicitud
+        setTidyFruits(allFruits); 
         alert("Error al buscar la fruta");
       }
     }
@@ -96,8 +95,6 @@ const Home = () => {
   };
   
   
-  
- 
 
 
   return (
