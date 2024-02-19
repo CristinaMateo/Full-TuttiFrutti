@@ -4,9 +4,9 @@ FROM frutas;`,
 getOneFruit: `SELECT id_fruta, nombre, imagen, calorias, azucar, proteina, carbs, fibra
 FROM frutas
 WHERE id_fruta = $1;`,
-getFruitByName:`SELECT nombre, imagen
+getFruitByName:`SELECT nombre, imagen, id_fruta
 FROM frutas
-WHERE nombre =$1;`,
+WHERE nombre LIKE $1 || '%';`,
 createFruit:`INSERT INTO frutas (nombre, imagen, calorias, proteina, azucar, carbs, fibra)
 VALUES ($1, $2, $3, $4, $5, $6, $7)`,
 updateFruit:`UPDATE frutas

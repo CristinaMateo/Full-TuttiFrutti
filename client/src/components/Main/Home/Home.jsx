@@ -2,13 +2,15 @@ import React from "react";
 import { useEffect, useState } from "react";
 import axios from 'axios';
 import FruitList from '../FruitList';
+import Searcher from "./Searcher/Searcher";
 
 const Home = () => {
 
   const [allFruits, setAllFruits] = useState([]);
   const [frutaTempo, setFrutaTempo] = useState([]);
   const [sortFilter, setSortFilter] = useState("none");
-  const [tidyFruits, setTidyFruits] = useState([])
+  const [tidyFruits, setTidyFruits] = useState([]);
+  const [searchText, setSearchText] = useState("");
 
   const getAllFruits = async () => {
     try {
@@ -59,6 +61,32 @@ const Home = () => {
   }, [sortFilter, allFruits]);
   
 
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+  
+    if (searchText.trim() === "") {
+      setTidyFruits(allFruits);
+    } else {
+      try {
+        const response = await axios.get(`http://localhost:3000/api/fruits/${searchText}`);
+        const data = response.data;
+  
+        // Verifica si es un array o un objeto y tiene al menos una fruta
+        if ((Array.isArray(data) && data.length > 0) || (typeof data === 'object' && Object.keys(data).length > 0)) {
+          setTidyFruits([data]); // Puedes convertir el objeto a un array si es necesario
+        } else {
+          setTidyFruits([]); // No se encontraron frutas
+          alert("Fruta no encontrada");
+        }
+      } catch (error) {
+        setTidyFruits([]); // Error al realizar la solicitud
+        alert("Error al buscar la fruta");
+      }
+    }
+  };
+  
+  
  
 
 
@@ -82,11 +110,7 @@ const Home = () => {
           </select>
         </form>
 
-        {/* <form id="searcher">
-          <label htmlFor="search">Search for a fruit:</label>
-          <input type="text" id="search" name="search" placeholder="Fruit"></input>
-            <input id="go" type="submit" value="Go"></input>
-        </form> */}
+        <Searcher searchText={searchText} setSearchText={setSearchText} onSearch={handleSearch} />
 
       </section>
 
