@@ -12,6 +12,8 @@ const Home = () => {
   const [tidyFruits, setTidyFruits] = useState([]);
   const [searchText, setSearchText] = useState("");
 
+
+
   const getAllFruits = async () => {
     try {
       const response = await axios.get('http://localhost:3000/api/fruits');
@@ -61,15 +63,21 @@ const Home = () => {
   }, [sortFilter, allFruits]);
   
 
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
 
   const handleSearch = async (event) => {
     event.preventDefault();
+    
   
     if (searchText.trim() === "") {
       setTidyFruits(allFruits);
     } else {
+      const formattedSearchText = capitalizeFirstLetter(searchText);
+  
       try {
-        const response = await axios.get(`http://localhost:3000/api/fruits/${searchText}`);
+        const response = await axios.get(`http://localhost:3000/api/fruits/${formattedSearchText}`);
         const data = response.data;
   
         // Verifica si es un array o un objeto y tiene al menos una fruta
@@ -84,7 +92,9 @@ const Home = () => {
         alert("Error al buscar la fruta");
       }
     }
+    setSearchText("");
   };
+  
   
   
  
@@ -96,7 +106,7 @@ const Home = () => {
       <section id="botones">
 
         <form id="sortForm">
-          <label htmlFor="ordenar">Choose sort-type</label>
+          <label htmlFor="ordenar">Choose sort-type: </label>
           <select
             name="ordenar"
             id="ordenar"
