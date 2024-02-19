@@ -19,6 +19,46 @@ a {
 }
 
 
+#botones{
+    width: 90%;
+    display: block;
+    margin: 0.5em auto;
+    text-align: center;
+  }
+
+  #go{
+    width: max-content;
+    background: $green;
+    color: $card;
+    font-size: 0.85em;
+    border: 1px solid $darkgr;
+    margin-left: 8px;
+    cursor: pointer;
+    &:hover {
+        background-color: $lightgr;
+    }
+
+    &:active {
+        background-color: $darkgr;
+    }
+  }
+
+
+#search,#ordenar{
+    margin-top: 0.25em;
+    margin-bottom: 0.25em;
+    margin-left: 10px;
+    border: 2px solid $darkgr;
+    height: 25px;
+}
+
+
+#sortForm{
+    margin-bottom: 20px;
+    margin-top: 50px;
+}
+
+
 @media screen and (max-width: 900px) {
     .bigGrid {
         grid-template-columns: repeat(1, 1fr);

@@ -1,13 +1,18 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import FruitList from '../FruitList'
+import FruitList from '../FruitList';
+import Searcher from "./Searcher/Searcher";
 
 const Home = () => {
 
   const [allFruits, setAllFruits] = useState([]);
   const [frutaTempo, setFrutaTempo] = useState([]);
-  const [mesTempo, setMesTempo] = useState("");
+  const [sortFilter, setSortFilter] = useState("none");
+  const [tidyFruits, setTidyFruits] = useState([]);
+  const [searchText, setSearchText] = useState("");
+
+
 
   const getAllFruits = async () => {
     try {
@@ -35,19 +40,89 @@ const Home = () => {
     getAllFruits();
     comprobarMes();
   }, []);
+  
+
+  const filter = (event) => {
+    setSortFilter(event.target.value)
+  }
+
+  useEffect(() => {
+    let ordenado;
+    if (sortFilter === "none") {
+      ordenado = allFruits
+    } else if (sortFilter === "az") {
+      ordenado = allFruits.slice().sort((a, b) => a.nombre.localeCompare(b.nombre));
+    } else if (sortFilter === "za") {
+      ordenado = allFruits.slice().sort((a, b) => b.nombre.localeCompare(a.nombre));
+    } else if (sortFilter === "caloriesup") {
+      ordenado = allFruits.slice().sort((a, b) => a.calorias - b.calorias);
+    } else if (sortFilter === "caloriesdown") {
+      ordenado = allFruits.slice().sort((a, b) => b.calorias - a.calorias);
+    }
+    setTidyFruits(ordenado);
+  }, [sortFilter, allFruits]);
+  
+
+  function capitalizeFirstLetter(str) {
+    return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
+  }
+
+  const handleSearch = async (event) => {
+    event.preventDefault();
+    
+  
+    if (searchText.trim() === "") {
+      setTidyFruits(allFruits);
+    } else {
+      const formattedSearchText = capitalizeFirstLetter(searchText);
+  
+      try {
+        const response = await axios.get(`http://localhost:3000/api/fruits/${formattedSearchText}`);
+        const data = response.data;
+  
+        // Verifica si es un array o un objeto y tiene al menos una fruta
+        if ((Array.isArray(data) && data.length > 0) || (typeof data === 'object' && Object.keys(data).length > 0)) {
+          setTidyFruits([data]); // Puedes convertir el objeto a un array si es necesario
+        } else {
+          setTidyFruits([]); // No se encontraron frutas
+          alert("Fruta no encontrada");
+        }
+      } catch (error) {
+        setTidyFruits([]); // Error al realizar la solicitud
+        alert("Error al buscar la fruta");
+      }
+    }
+    setSearchText("");
+  };
+  
+  
+  
+ 
 
 
   return (
     <section id="home">
 
-      <form>
-        Hacer formulario con hook-form para:
-        - ordenar lista A-Z / Z-A
-        - ordenar lista por calorias
-        - buscador de frutas
-        - algún filtro, por ejemplo menos de x gramos de azucar
-      </form>
+      <section id="botones">
 
+        <form id="sortForm">
+          <label htmlFor="ordenar">Choose sort-type: </label>
+          <select
+            name="ordenar"
+            id="ordenar"
+            onChange={filter}
+          >
+            <option value="none">None</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="caloriesup">Calories Ascendent</option>
+            <option value="caloriesdown">Calories Descendent</option>
+          </select>
+        </form>
+
+        <Searcher searchText={searchText} setSearchText={setSearchText} onSearch={handleSearch} />
+
+      </section>
 
       <section className="bigGrid">
         <aside className="temporada">
@@ -59,9 +134,9 @@ const Home = () => {
             ))}
           </ul>
         </aside>
-        
+
         <article className="fruit-list">
-          <FruitList fruitList={allFruits} />
+          <FruitList fruitList={tidyFruits} />
         </article>
 
 
