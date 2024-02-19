@@ -1,13 +1,14 @@
 import React from "react";
 import { useEffect, useState } from "react";
 import axios from 'axios';
-import FruitList from '../FruitList'
+import FruitList from '../FruitList';
 
 const Home = () => {
 
   const [allFruits, setAllFruits] = useState([]);
   const [frutaTempo, setFrutaTempo] = useState([]);
-  const [mesTempo, setMesTempo] = useState("");
+  const [sortFilter, setSortFilter] = useState("none");
+  const [tidyFruits, setTidyFruits] = useState([])
 
   const getAllFruits = async () => {
     try {
@@ -35,19 +36,59 @@ const Home = () => {
     getAllFruits();
     comprobarMes();
   }, []);
+  
+
+  const filter = (event) => {
+    setSortFilter(event.target.value)
+  }
+
+  useEffect(() => {
+    let ordenado;
+    if (sortFilter === "none") {
+      ordenado = allFruits
+    } else if (sortFilter === "az") {
+      ordenado = allFruits.slice().sort((a, b) => a.nombre.localeCompare(b.nombre));
+    } else if (sortFilter === "za") {
+      ordenado = allFruits.slice().sort((a, b) => b.nombre.localeCompare(a.nombre));
+    } else if (sortFilter === "caloriesup") {
+      ordenado = allFruits.slice().sort((a, b) => a.calorias - b.calorias);
+    } else if (sortFilter === "caloriesdown") {
+      ordenado = allFruits.slice().sort((a, b) => b.calorias - a.calorias);
+    }
+    setTidyFruits(ordenado);
+  }, [sortFilter, allFruits]);
+  
+
+ 
 
 
   return (
     <section id="home">
 
-      <form>
-        Hacer formulario con hook-form para:
-        - ordenar lista A-Z / Z-A
-        - ordenar lista por calorias
-        - buscador de frutas
-        - algún filtro, por ejemplo menos de x gramos de azucar
-      </form>
+      <section id="botones">
 
+        <form id="sortForm">
+          <label htmlFor="ordenar">Choose sort-type</label>
+          <select
+            name="ordenar"
+            id="ordenar"
+            onChange={filter}
+          >
+            <option value="none">None</option>
+            <option value="az">A-Z</option>
+            <option value="za">Z-A</option>
+            <option value="caloriesup">Calories Ascendent</option>
+            <option value="caloriesdown">Calories Descendent</option>
+          </select>
+        </form>
+
+        {/* <form id="searcher">
+          <label htmlFor="search">Search for a fruit:</label>
+          <input type="text" id="search" name="search" placeholder="Fruit"></input>
+            <input id="go" type="submit" value="Go"></input>
+        </form> */}
+
+      </section>
 
       <section className="bigGrid">
         <aside className="temporada">
@@ -59,9 +100,9 @@ const Home = () => {
             ))}
           </ul>
         </aside>
-        
+
         <article className="fruit-list">
-          <FruitList fruitList={allFruits} />
+          <FruitList fruitList={tidyFruits} />
         </article>
 
 

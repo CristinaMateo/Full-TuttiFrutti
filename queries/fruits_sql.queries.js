@@ -1,5 +1,5 @@
 const queries ={
-getFruits: `SELECT nombre, imagen, id_fruta
+getFruits: `SELECT nombre, imagen, calorias, id_fruta
 FROM frutas;`,
 getOneFruit: `SELECT id_fruta, nombre, imagen, calorias, azucar, proteina, carbs, fibra
 FROM frutas
