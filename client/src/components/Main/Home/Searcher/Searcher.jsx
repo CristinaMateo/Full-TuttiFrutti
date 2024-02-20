@@ -14,7 +14,7 @@ const Searcher = ({ searchText, setSearchText, onSearch, goBack, back }) => {
 
   return (
     <form id="searcher">
-      <label htmlFor="search">Search for a fruit:</label>
+      <label htmlFor="search">Busca una fruta:</label>
       <input
       id="search"
         className="searcher"

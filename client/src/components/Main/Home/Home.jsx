@@ -111,17 +111,17 @@ const Home = () => {
       <section id="botones">
 
         <form id="sortForm">
-          <label htmlFor="ordenar">Choose sort-type: </label>
+          <label htmlFor="ordenar">Escoge un tipo de orden: </label>
           <select
             name="ordenar"
             id="ordenar"
             onChange={filter}
           >
-            <option value="none">None</option>
+            <option value="none">Ninguno</option>
             <option value="az">A-Z</option>
             <option value="za">Z-A</option>
-            <option value="caloriesup">Calories Ascendent</option>
-            <option value="caloriesdown">Calories Descendent</option>
+            <option value="caloriesup">Calorias Ascendente</option>
+            <option value="caloriesdown">Calorias Descendente</option>
           </select>
         </form>
 
@@ -133,7 +133,7 @@ const Home = () => {
         <aside className="temporada">
 
           <h3>Frutas de temporada en {frutaTempo.length > 0 ? frutaTempo[0].nombre_mes : "el mes actual"}</h3>
-          <ul>
+          <ul className="listaTempo">
             {frutaTempo.map((fruta, index) => (
               <li key={index}>{fruta.nombre}</li>
             ))}
@@ -141,6 +141,7 @@ const Home = () => {
         </aside>
 
         <article className="fruit-list">
+          <h3>Todas las frutas</h3>
           <FruitList fruitList={tidyFruits} />
         </article>
 

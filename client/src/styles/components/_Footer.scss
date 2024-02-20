@@ -1,0 +1,11 @@
+@import '../utils/variables.scss';
+
+.footer>p{
+    font-size:medium;
+    color: $green;
+}
+
+.footer{
+    width: 70%;
+    margin: 70px auto;
+}
