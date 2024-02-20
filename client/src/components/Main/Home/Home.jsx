@@ -88,10 +88,12 @@ const Home = () => {
         }
       } catch (error) {
         setTidyFruits(allFruits); 
+        console.log(error);
         alert("Error al buscar la fruta");
       }
     }
     setSearchText("");
+    setSortFilter("none")
   };
   
   

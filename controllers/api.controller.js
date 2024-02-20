@@ -31,6 +31,7 @@ const getFruitByName = async (req, res) => {
         fruits = await api.getFruitByName(req.params.name);//esto accede a models y llama a esa funcion allí
         res.status(200).json(fruits); // [] con las entries encontradas
     } catch (error) {
+        console.log(error);
         res.status(400).json({
             msg: "Error getting fruits"
         })
