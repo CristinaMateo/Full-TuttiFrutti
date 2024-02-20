@@ -5,7 +5,7 @@ const FruitList = ({ fruitList }) => {
 
   return (
     <article className="frutiLista">
-      {fruitList && fruitList.length > 0 ? (
+      {Array.isArray(fruitList) && fruitList.length > 0 ? (
         fruitList.map((fruits, index) => (
           <FruitCard key={index} fruits={fruits} />
         ))

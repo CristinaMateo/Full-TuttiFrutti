@@ -40,7 +40,7 @@ const Home = () => {
     getAllFruits();
     comprobarMes();
   }, []);
-  
+
 
   const filter = (event) => {
     setSortFilter(event.target.value)
@@ -61,7 +61,7 @@ const Home = () => {
     }
     setTidyFruits(ordenado);
   }, [sortFilter, allFruits]);
-  
+
 
   function capitalizeFirstLetter(str) {
     return str.charAt(0).toUpperCase() + str.slice(1).toLowerCase();
@@ -69,32 +69,33 @@ const Home = () => {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    
-  
+
+
     if (searchText.trim() === "") {
       setTidyFruits(allFruits);
     } else {
       const formattedSearchText = capitalizeFirstLetter(searchText);
-  
+
       try {
-        const response = await axios.get(`http://localhost:3000/api/fruits/${formattedSearchText}`);
+        const response = await axios.get(`/api/fruits/${formattedSearchText}`);
         const data = response.data;
-  
+        console.log(data);
+
         if ((Array.isArray(data) && data.length > 0) || (typeof data === 'object' && Object.keys(data).length > 0)) {
-          setTidyFruits([data]); 
+          setTidyFruits([data]);
         } else {
-          setTidyFruits(allFruits); 
+          setTidyFruits(allFruits);
           alert("Fruta no encontrada");
         }
       } catch (error) {
-        setTidyFruits(allFruits); 
+        setTidyFruits(allFruits);
         alert("Error al buscar la fruta");
       }
     }
     setSearchText("");
   };
-  
-  
+
+
 
 
   return (
@@ -123,21 +124,21 @@ const Home = () => {
 
       <section className="bigGrid">
         <aside className="temporada">
-
           <h3>Frutas de temporada en {frutaTempo.length > 0 ? frutaTempo[0].nombre_mes : "el mes actual"}</h3>
           <ul>
-            {frutaTempo.map((fruta, index) => (
-              <li key={index}>{fruta.nombre}</li>
-            ))}
+            {Array.isArray(frutaTempo) && frutaTempo.length > 0 ? (
+              frutaTempo.map((fruta, index) => (
+                <li key={index}>{fruta.nombre}</li>
+              ))
+            ) : (
+              <li>Error en temporada</li>
+            )}
           </ul>
         </aside>
 
         <article className="fruit-list">
           <FruitList fruitList={tidyFruits} />
         </article>
-
-
-
       </section>
 
     </section>
