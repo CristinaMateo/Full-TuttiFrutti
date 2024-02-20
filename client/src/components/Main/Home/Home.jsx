@@ -11,6 +11,7 @@ const Home = () => {
   const [sortFilter, setSortFilter] = useState("none");
   const [tidyFruits, setTidyFruits] = useState([]);
   const [searchText, setSearchText] = useState("");
+  const [back, setBack] = useState(false);
 
 
 
@@ -69,8 +70,7 @@ const Home = () => {
 
   const handleSearch = async (event) => {
     event.preventDefault();
-    
-  
+   
     if (searchText.trim() === "") {
       setTidyFruits(allFruits);
     } else {
@@ -82,6 +82,7 @@ const Home = () => {
   
         if ((Array.isArray(data) && data.length > 0) || (typeof data === 'object' && Object.keys(data).length > 0)) {
           setTidyFruits([data]); 
+          setBack(true)
         } else {
           setTidyFruits(allFruits); 
           alert("Fruta no encontrada");
@@ -93,10 +94,15 @@ const Home = () => {
       }
     }
     setSearchText("");
-    setSortFilter("none")
+    setSortFilter("none");
   };
   
-  
+  const goBack = () =>{
+    setTidyFruits(allFruits);
+    setSearchText("");
+    setSortFilter("none");
+    setBack(false)
+  }
 
 
   return (
@@ -119,7 +125,7 @@ const Home = () => {
           </select>
         </form>
 
-        <Searcher searchText={searchText} setSearchText={setSearchText} onSearch={handleSearch} />
+        <Searcher searchText={searchText} setSearchText={setSearchText} onSearch={handleSearch} back={back} goBack={goBack}/>
 
       </section>
 

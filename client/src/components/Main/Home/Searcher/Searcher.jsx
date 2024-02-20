@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { useDebounce } from "use-debounce";
 
 
-const Searcher = ({ searchText, setSearchText, onSearch }) => {
+const Searcher = ({ searchText, setSearchText, onSearch, goBack, back }) => {
   
   
   
@@ -23,6 +23,7 @@ const Searcher = ({ searchText, setSearchText, onSearch }) => {
         onChange={handleInputChange}
       />
       <button id="go" type="submit" onClick={onSearch}>Go</button>
+      {back &&  <button id="back" onClick={goBack}>Back</button> }
     </form>
   );
 };
