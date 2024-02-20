@@ -21,7 +21,7 @@ const Header = () => {
         {loggedUser && <Logged />}
         {!loggedUser && <button id="signup-login" onClick={toAuth}>Sign up / Log in</button>}
       </section>
-      <header>
+      <header  id="top">
         <h1>My Tutti Frutti App</h1>
         <Nav/>
       </header>

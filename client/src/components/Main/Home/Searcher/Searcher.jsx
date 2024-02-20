@@ -21,9 +21,10 @@ const Searcher = ({ searchText, setSearchText, onSearch, goBack, back }) => {
         type="text"
         value={searchText}
         onChange={handleInputChange}
+        placeholder="..."
       />
-      <button id="go" type="submit" onClick={onSearch}>Go</button>
-      {back &&  <button id="back" onClick={goBack}>Back</button> }
+      <button id="go" type="submit" onClick={onSearch}>Buscar</button>
+      {back &&  <button id="back" onClick={goBack}>Atrás</button> }
     </form>
   );
 };
